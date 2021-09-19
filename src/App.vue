@@ -6,25 +6,19 @@
 </template>
 
 <script>
-  import AppHeader from '@/components/AppHeader.vue'
+import AppHeader from "@/components/AppHeader.vue";
 
-  export default {
-    components: {
-      AppHeader
-    }
-  }
-
-
+export default {
+  components: {
+    AppHeader,
+  },
+};
 </script>
 
 <style>
-
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
-
-
-
 </style>
