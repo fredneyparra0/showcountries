@@ -13,14 +13,16 @@
       </div>
     </div>
 
-    <div class="boxcard" v-for="(country, index) in countrys" :key="index">
-      <div class="boxcard__card">
-        <img class="boxcard__image" :src="country.flag" />
-        <p class="boxcard__title">{{ country.name }}</p>
-        <p class="boxcard__subtitle">Population: 10000</p>
-        <p class="boxcard__subtitle">region: europe</p>
-        <p class="boxcard__subtitle">capital: berlin</p>
-      </div>
+    <div class="boxcard">
+      <app-card 
+        v-for="(country, index) in countrys" 
+        :key="index"
+        :namecountrie="country.name"
+        :imagecountrie="country.flag"
+        :population="country.population"
+        :region="country.region"
+        :capital="country.capital"
+      ></app-card>
     </div>
   </div>
 </template>
@@ -29,8 +31,13 @@
 // @ is an alias to /src
 
 import { mapState, mapMutations, mapActions } from "vuex";
+import AppCard from '@/components/AppCard.vue'
+
 
 export default {
+  components: {
+    AppCard
+  },
   mounted() {
     this.findCountrys();
   },
@@ -99,23 +106,5 @@ body {
   outline: none;
 }
 
-/**
- * Box Card
- * 
- * */
 
-.boxcard {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.boxcard__card {
-  width: 250px;
-  border: 1px solid red;
-}
-
-.boxcard__image {
-  height: 100px;
-}
 </style>
