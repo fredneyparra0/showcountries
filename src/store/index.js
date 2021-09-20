@@ -2,14 +2,15 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
-        countrys: []
+        countrys: [],
+        oneCountry: []
     },
     mutations: {
         assignCountrys(state, getcountrys) {
             state.countrys = getcountrys
         },
-        assignBanders(state, getBanders) {
-            state.banders = getBanders
+        assignOneCountrie(state, getCountrie) {
+            state.oneCountry = getCountrie
         }
     },
     actions: {
@@ -19,6 +20,13 @@ export default createStore({
             console.log(dataJson)
 
             commit('assignCountrys', dataJson)
+        },
+        async getOneCountrie ({ commit }, name) {
+            const fetchData = await fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`);
+            const dataJson = await fetchData.json();
+            console.log(dataJson)
+
+            commit('assignOneCountrie', dataJson)
         }
     },
     modules: {

@@ -1,4 +1,7 @@
 <template>
+	<router-link class="router"
+		:to="{ name: 'Countrie', params: { name: namecountrie } }"
+		@click="getOneCountrie( namecountrie )">
 	<div class="boxcard__card">
         <img class="boxcard__image" :src="imagecountrie"/>
         <p class="boxcard__title">{{ namecountrie }}</p>
@@ -6,18 +9,23 @@
         <p class="boxcard__subtitle"> <strong>region:</strong> {{ region }}</p>
         <p class="boxcard__subtitle"> <strong>capital: </strong>{{ capital }}</p>
       </div>
+    </router-link>
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from "vuex";
 
 	export default {
 		props: {
 			namecountrie: String,
 			imagecountrie: String,
-			population: String,
+			population: Number,
 			region: String,
 			capital: String
-		}
+		},
+		methods: {
+    		...mapActions(["findCountrys", "getOneCountrie"]),
+  		}
 	}
 </script>
 
@@ -26,6 +34,10 @@
 * Box Card
 * 
 * */
+
+.router {
+	text-decoration: none;
+}
 
 .boxcard {
 	display: flex;

@@ -14,15 +14,17 @@
     </div>
 
     <div class="boxcard">
-      <app-card 
-        v-for="(country, index) in countrys" 
-        :key="index"
-        :namecountrie="country.name"
-        :imagecountrie="country.flag"
-        :population="country.population"
-        :region="country.region"
-        :capital="country.capital"
-      ></app-card>
+      
+        <app-card 
+          v-for="(country, index) in countrys" 
+          :key="index"
+          :namecountrie="country.name"
+          :imagecountrie="country.flag"
+          :population="country.population"
+          :region="country.region"
+          :capital="country.capital"
+        ></app-card>
+
     </div>
   </div>
 </template>
@@ -42,7 +44,7 @@ export default {
     this.findCountrys();
   },
   methods: {
-    ...mapActions(["findCountrys"]),
+    ...mapActions(["findCountrys", "getOneCountrie"]),
   },
   computed: {
     ...mapState(["countrys"]),
