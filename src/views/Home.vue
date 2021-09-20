@@ -4,7 +4,8 @@
       <div class="content__elements">
         <div class="content__boxleft">
           <img class="content__image" :src="require('@/assets/search.png')" />
-          <input class="content__input content__input--white" type="text" />
+          <input class="content__input content__input--white" @keyup="filterCountrie(nameFilter)" v-model="nameFilter" type="text" />
+          {{ nameFilter }}
         </div>
         <select class="content__boxright content__input--white">
           <option value="undefined">Filter by Región</option>
@@ -37,6 +38,11 @@ import AppCard from '@/components/AppCard.vue'
 
 
 export default {
+  data(){
+    return {
+      nameFilter: ''
+    }
+  },
   components: {
     AppCard
   },
@@ -44,10 +50,10 @@ export default {
     this.findCountrys();
   },
   methods: {
-    ...mapActions(["findCountrys", "getOneCountrie"]),
+    ...mapActions(["findCountrys", "getOneCountrie","filterCountrie"]),
   },
   computed: {
-    ...mapState(["countrys"]),
+    ...mapState(["countrys", "filterCountry"]),
   }
 };
 </script>

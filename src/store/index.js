@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
         countrys: [],
-        oneCountry: []
+        oneCountry: [],
+        filterCountry: 'hola como estas'
     },
     mutations: {
         assignCountrys(state, getcountrys) {
@@ -17,16 +18,21 @@ export default createStore({
         async findCountrys({ commit }) {
             const data = await fetch('https://restcountries.eu/rest/v2/lang/es');
             const dataJson = await data.json()
-            console.log(dataJson)
-
             commit('assignCountrys', dataJson)
         },
         async getOneCountrie ({ commit }, name) {
             const fetchData = await fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`);
             const dataJson = await fetchData.json();
-            console.log(dataJson)
-
             commit('assignOneCountrie', dataJson)
+        },
+        filterCountrie (state ,name) {
+            this.state.countrys.forEach(el => {
+                if (el.name.includes(name)) {
+                    console.log('sip', el)
+                }else {
+                    console.log('no hay coincidencia')
+                }
+            })
         }
     },
     modules: {

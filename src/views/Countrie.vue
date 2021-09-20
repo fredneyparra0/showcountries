@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="box">
-			<button class="btn"> <router-link to="/"></router-link> Back</button>
+			<button class="btn"> <router-link to="/">Back</router-link> </button>
 		</div>
 		<div class="boxrow">
 			<div class="boxrow__box boxrow__box--center">
@@ -41,6 +41,11 @@
 </script>
 
 <style>
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
 
 .box {
 	width: 90%;
